@@ -14,15 +14,18 @@
 \usepackage{amssymb}
 \usepackage{epstopdf}
 \usepackage{xcolor}
-\usepackage{color, soul}
-\sethlcolor{red}
-\makeatletter
-\def\SOUL@hlpreamble{%
-    \setul{\dp\strutbox}{\dimexpr\ht\strutbox+\dp\strutbox\relax}%
-    \let\SOUL@stcolor\SOUL@hlcolor
-    \SOUL@stpreamble
-}
-\makeatother
+% \usepackage{color, soul}
+% \usepackage{soul} 
+
+% \makeatletter
+% \let\HL\hl
+% \renewcommand\hl{%
+%   \let\set@color\beamerorig@set@color
+%   \let\reset@color\beamerorig@reset@color
+%   \HL}
+% \makeatother
+% \setstcolor{red} 
+% \sethlcolor{ITMOred} 
 
 \DeclareMathOperator{\sat}{sat}
 \DeclareMathOperator{\diag}{diag}
@@ -111,11 +114,12 @@
 
 
 \begin{frame}{Highlighting}
-    Sometimes it is useful to \alert{highlight} certain words in the text.
+    Sometimes it is useful to \boxalert{highlight} certain words in the text.
 
     \begin{alertblock}{Important message}
         If a lot of text should be \alert{highlighted}, it is a good idea to put it in a box.
     \end{alertblock}
+    
 
     It is easy to match the \structure{colour theme}.
 \end{frame}
