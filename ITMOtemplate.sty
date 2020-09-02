@@ -1,3 +1,5 @@
+
+\mode<presentation>
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%% Define the colors of the corporate style.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -351,3 +353,135 @@
     coltext=black,
     overlay={\coordinate (X) at ([xshift=-7.50mm]frame.west);
       \mydraw; \draw[very thick, color=\mycolor] (frame.north west) -- (frame.south west); }]}{\end{tcbitemize}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% Fancybox 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newsavebox\mybox
+\providecommand\fancybox[3][ITMOblue]{%
+\tcbset{
+  mybox/.style={
+    enhanced,
+    grow to left by=-2.5cm,
+    boxsep=0mm,
+    sharp corners=all,
+    opacityfill=0,
+    coltext=black,
+    overlay={
+      \coordinate (X) at ([xshift=-1mm, yshift=-1.5mm]frame.north west);
+      \node[align=right, text=#1, text width=2.5cm, anchor=north east] at (X) {#2};
+      \draw[line width=0.5mm, color=#1] (frame.north west) -- (frame.south west); 
+      }
+    }
+  }
+
+\begin{tcolorbox}[mybox]
+  efdf: #3
+\end{tcolorbox}
+
+
+}
+
+
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage{amsthm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Theorem
+\newcounter{theo} \setcounter{theo}{0}
+\renewcommand{\thetheo}{\arabic{theo}}
+\resetcounteronoverlays{theo}
+
+\renewenvironment<>{theorem}[1][]{%
+    \refstepcounter{theo}
+    \tcbset{
+      mybox/.style={
+        enhanced,
+        grow to left by=-2cm,
+        boxsep=0mm,
+        sharp corners=all,
+        opacityfill=0,
+        coltext=black,
+        overlay={
+          \coordinate (X) at ([xshift=-1mm, yshift=-1.5mm]frame.north west);
+          \node[align=right, text=ITMOblue, text width=2.5cm, anchor=north east] at (X) {Theorem~\thetheo};
+          \draw[line width=0.5mm, color=ITMOblue] (frame.north west) -- (frame.south west); 
+          }
+        }
+      }
+    \begin{actionenv}\begin{tcolorbox}[mybox]
+      \textit{#1} \\
+}{
+    \end{tcolorbox}\end{actionenv}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Proof
+\renewenvironment<>{proof}{%
+    \tcbset{
+      mybox/.style={
+        enhanced,
+        grow to left by=-2cm,
+        boxsep=0mm,
+        sharp corners=all,
+        opacityfill=0,
+        coltext=black,
+        overlay={
+          \coordinate (X) at ([xshift=-1mm, yshift=-1.5mm]frame.north west);
+          \node[align=right, text=ITMOEmerald, text width=2.5cm, anchor=north east] at (X) {Proof.};
+          \draw[line width=0.5mm, color=ITMOEmerald] (frame.north west) -- (frame.south west); 
+          }
+        }
+      }
+    \begin{tcolorbox}[mybox]
+}{
+    \hfill\qedsymbol\end{tcolorbox}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Example
+\newcounter{exmpl} \setcounter{exmpl}{0}
+\renewcommand{\theexmpl}{\arabic{exmpl}}
+\resetcounteronoverlays{exmpl}
+
+\renewenvironment<>{example}{%
+    \refstepcounter{exmpl}
+    \tcbset{
+      mybox/.style={
+        enhanced,
+        grow to left by=-2cm,
+        boxsep=0mm,
+        sharp corners=all,
+        opacityfill=0,
+        coltext=black,
+        overlay={
+          \coordinate (X) at ([xshift=-1mm, yshift=-1.5mm]frame.north west);
+          \node[align=right, text=ITMOPeach, text width=2.5cm, anchor=north east] at (X) {Example~\theexmpl};
+          \draw[line width=0.5mm, color=ITMOPeach] (frame.north west) -- (frame.south west); 
+          }
+        }
+      }
+    \begin{tcolorbox}[mybox]
+      \textit{#1} \par
+}{
+    \end{tcolorbox}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Alertblock
+\renewenvironment<>{alertblock}[1]{%
+    \tcbset{
+      mybox/.style={
+        enhanced,
+        grow to left by=-2cm,
+        boxsep=0mm,
+        sharp corners=all,
+        opacityfill=0,
+        coltext=black,
+        overlay={
+          \coordinate (X) at ([xshift=-1mm, yshift=-1.5mm]frame.north west);
+          \node[align=right, text=ITMOred, text width=2.5cm, anchor=north east] at (X) {#1};
+          \draw[line width=0.5mm, color=ITMOred] (frame.north west) -- (frame.south west); 
+          }
+        }
+      }
+    \begin{tcolorbox}[mybox]
+}{
+    \end{tcolorbox}
+}
