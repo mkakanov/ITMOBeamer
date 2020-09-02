@@ -8,7 +8,7 @@
 \definecolor{ITMOSkyBlue}{RGB}{61,181,230}
 \definecolor{ITMOHerbal}{RGB}{25,70,186}
 \definecolor{ITMOMint}{RGB}{0,174,157}
-\definecolor{ITMOSeaWave}{RGB}{255,222,23}
+\definecolor{ITMOSeaWave}{RGB}{94, 192, 213}
 \definecolor{ITMOMango}{RGB}{255,230,13}
 \definecolor{ITMOLemon}{RGB}{235,231,14}
 \definecolor{ITMOCoral}{RGB}{234,65,38}
@@ -128,6 +128,12 @@
 %%%%% Blocks
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \setbeamercolor{block title alerted}{fg=white,bg=ITMOred}
+
+\setbeamercolor{block title}{use=structure,fg=white,bg=ITMOMint}
+\setbeamercolor{block body}{use=structure,fg=black,bg=white}
+
+\setbeamercolor{block body example}{bg=white}
+\setbeamercolor{block title example}{fg=white, bg=ITMOPeach}
 
 \makeatletter
 \newcommand\beamerboxesframed[2][]{%
@@ -284,4 +290,64 @@
 \setbeamertemplate{blocks}[framed]
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% Fancylist environment
+%%%%% https://tex.stackexchange.com/questions/385663/custom-enumerate-list-align-enumerate-label-at-the-center-of-text
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[raster,most]{tcolorbox}
+% a default color
+% \definecolor{ITMOblue}{HTML}{03A9F4}
+% \definecolor{BodyColor}{black}
+\newcounter{fancycount}
+% lets define some options using pgfkeys 
+% https://tex.stackexchange.com/questions/34312/how-to-create-a-command-with-key-values
+\pgfkeys{
+ /fancylist/.is family, /fancylist,
+ default/.style = 
+  {shape = ring, color = ITMOblue},
+  shape/.estore in = \myshape,
+  color/.estore in = \mycolor,
+}
 
+\newenvironment{fancylist}[1][color=ITMOSeaWave, shape=circle]{%
+  \pgfkeys{/fancylist, default, #1}%
+
+  % lets decide label shape based on option
+  \def\mysquare{square}
+  \def\myring{ring}
+  \def\myhollowsquare{hollowsquare}
+  \ifx\myshape\mysquare
+  \def\mydraw{
+  \node[draw=\mycolor,rectangle,minimum width=7.0mm, minimum height=7.0mm, inner sep=0pt,fill=\mycolor] at (X) {\refstepcounter{fancycount}\Large\arabic{fancycount}}
+  }
+  \else
+    \ifx\myshape\myhollowsquare
+    \def\mydraw{
+      \node[draw=\mycolor,rectangle,minimum width=7.0mm, minimum height=7.0mm, inner sep=0pt] at (X) {\refstepcounter{fancycount}\Large\arabic{fancycount}}
+      }
+    \else
+      \ifx\myshape\myring
+        \def\mydraw{
+        \node[draw=\mycolor,circle,minimum width=7.0mm,inner sep=0pt] at (X) {\refstepcounter{fancycount}\Large\arabic{fancycount}}
+        }
+      \else
+        \def\mydraw{
+        \node[draw=\mycolor,circle,minimum width=7.0mm,inner sep=0pt,fill=\mycolor] at (X) {\refstepcounter{fancycount}\Large\arabic{fancycount}}
+        }
+      \fi
+    \fi
+  \fi
+
+  \setcounter{fancycount}{0}
+  % lets keep it simple and ask users to use \item
+  \def\item{\tcbitem}
+  \begin{tcbitemize}[raster columns=1,    
+    nofloat,
+    enhanced,
+    raster left skip=10.0mm,
+    sharp corners=all,
+    opacityfill=0,
+    valign=center,
+    coltext=black,
+    overlay={\coordinate (X) at ([xshift=-7.50mm]frame.west);
+      \mydraw; \draw[very thick, color=\mycolor] (frame.north west) -- (frame.south west); }]}{\end{tcbitemize}}
