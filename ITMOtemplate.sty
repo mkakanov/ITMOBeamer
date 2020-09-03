@@ -1,5 +1,11 @@
 
 \mode<presentation>
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% Packages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[raster,most]{tcolorbox}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%% Define the colors of the corporate style.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -24,6 +30,7 @@
     \noindent\begin{picture}(0,0)
         \put(-31.5,-153.65){
         \begin{tikzpicture}
+            % ToDo: Generate with different colors
             \includegraphics[height=\paperheight,width=\paperwidth]{figs/itmo_polygons.pdf}
         \end{tikzpicture}
         }
@@ -132,10 +139,6 @@
 %%%%% Fancylist environment
 %%%%% https://tex.stackexchange.com/questions/385663/custom-enumerate-list-align-enumerate-label-at-the-center-of-text
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage[raster,most]{tcolorbox}
-% a default color
-% \definecolor{ITMOblue}{HTML}{03A9F4}
-% \definecolor{BodyColor}{black}
 \newcounter{fancycount}
 % lets define some options using pgfkeys 
 % https://tex.stackexchange.com/questions/34312/how-to-create-a-command-with-key-values
@@ -218,9 +221,6 @@
 
 }
 
-
-\usepackage[framemethod=TikZ]{mdframed}
-\usepackage{amsthm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Theorem
 \newcounter{theo} \setcounter{theo}{0}
