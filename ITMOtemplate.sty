@@ -28,7 +28,7 @@
 
 \newcommand{\itmopolygons}[1]{
     \noindent\begin{picture}(0,0)
-        \put(-31.5,-153.65){
+        \put(-32.1,-153.65){
         \begin{tikzpicture}
             % ToDo: Generate with different colors
             \includegraphics[height=\paperheight,width=\paperwidth]{figs/itmo_polygons.pdf}
@@ -150,7 +150,7 @@
   color/.estore in = \mycolor,
 }
 
-\newenvironment{fancylist}[1][color=ITMOSeaWave, shape=circle]{%
+\newenvironment{fancylist}[1][color=ITMOPeach, shape=circle]{%
   \pgfkeys{/fancylist, default, #1}%
 
   % lets decide label shape based on option
@@ -159,21 +159,21 @@
   \def\myhollowsquare{hollowsquare}
   \ifx\myshape\mysquare
   \def\mydraw{
-  \node[draw=\mycolor,rectangle,minimum width=7.0mm, minimum height=7.0mm, inner sep=0pt,fill=\mycolor] at (X) {\refstepcounter{fancycount}\Large\arabic{fancycount}}
+  \node[draw=\mycolor,rectangle,minimum width=7.0mm, minimum height=7.0mm, inner sep=0pt,fill=\mycolor] at (X) {\color{white}\refstepcounter{fancycount}\Large\arabic{fancycount}}
   }
   \else
     \ifx\myshape\myhollowsquare
     \def\mydraw{
-      \node[draw=\mycolor,rectangle,minimum width=7.0mm, minimum height=7.0mm, inner sep=0pt] at (X) {\refstepcounter{fancycount}\Large\arabic{fancycount}}
+      \node[draw=\mycolor,rectangle,minimum width=7.0mm, minimum height=7.0mm, inner sep=0pt] at (X) {\color{white}\refstepcounter{fancycount}\Large\arabic{fancycount}}
       }
     \else
       \ifx\myshape\myring
         \def\mydraw{
-        \node[draw=\mycolor,circle,minimum width=7.0mm,inner sep=0pt] at (X) {\refstepcounter{fancycount}\Large\arabic{fancycount}}
+        \node[draw=\mycolor,circle,minimum width=7.0mm,inner sep=0pt] at (X) {\color{white}\refstepcounter{fancycount}\Large\arabic{fancycount}}
         }
       \else
         \def\mydraw{
-        \node[draw=\mycolor,circle,minimum width=7.0mm,inner sep=0pt,fill=\mycolor] at (X) {\refstepcounter{fancycount}\Large\arabic{fancycount}}
+        \node[draw=\mycolor,circle,minimum width=7.0mm,inner sep=0pt,fill=\mycolor] at (X) {\color{white}\refstepcounter{fancycount}\Large\arabic{fancycount}}
         }
       \fi
     \fi
