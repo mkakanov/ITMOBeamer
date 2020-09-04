@@ -76,7 +76,7 @@
   \begin{centering}
       \begin{center}
         \vspace{1cm}
-        \includegraphics[height = 1.5cm]{figs/itmo_logo_transp_en.png} \\
+        \includegraphics[height = 1.5cm]{figs/itmo_logo_blue_en.eps} \\
         \vspace{1cm}
 
         \noindent\makebox[\textwidth][c]{%
@@ -107,18 +107,18 @@
 \setbeamertemplate{navigation symbols}{}
 \setbeamercolor{section in head/foot}{bg=ITMOblue, fg=ITMOwhite}
 
+%%% See the beamercolorbox documentation in http://tug.ctan.org/macros/latex/contrib/beamer/doc/beameruserguide.pdf
+%%% The page 126
 \setbeamertemplate{frametitle}{
-\begin{beamercolorbox}[wd=\paperwidth,ht=18pt,left,leftskip=10px,dp=10pt]{section in head/foot}
-  \begin{minipage}{0.83\textwidth}
+\nointerlineskip
+\begin{beamercolorbox}[wd=\paperwidth,dp=7pt,ht=18pt,leftskip=10px,rightskip=10px]{section in head/foot}
   \insertframetitle
-  \end{minipage}
-  \begin{minipage}{0.17\textwidth}
-  \includegraphics[height = 0.4cm]{figs/itmo_logo_horiz_transp_en.png}
-  \end{minipage}
+  \hfill
+  \raisebox{-1pt}{\includegraphics[height=12pt]{figs/itmo_logo_horiz_blue_en.eps}}
 \end{beamercolorbox}
 }
 
-\logo{\includegraphics[height=1.5cm]{figs/itmo_logo_transp_en.png}}
+\logo{\includegraphics[height=1.5cm]{figs/itmo_logo_blue_en.eps}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%% Beamer Features
