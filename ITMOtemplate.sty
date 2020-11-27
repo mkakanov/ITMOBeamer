@@ -1,6 +1,8 @@
 
 \mode<presentation>
-\usefonttheme[onlymath]{serif}
+%%%%% Fourier math
+\usepackage[T1]{fontenc} 
+\usepackage{fourier} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%% Packages
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -20,6 +22,23 @@
 \definecolor{ITMOLemon}{RGB}{235,231,14}
 \definecolor{ITMOCoral}{RGB}{234,65,38}
 \definecolor{ITMOEmerald}{RGB}{0,148,77}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% Headline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setbeamertemplate{headline}{\vskip-.1px}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% Footline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setbeamertemplate{footline}{
+   \begin{beamercolorbox}[ht=3ex,dp=2ex,leftskip=1.4cm,rightskip=.3cm]{section in head/foot}
+     \insertsectionnavigationhorizontal{.8\textwidth}{}{}
+     \hfill 
+     \insertframenumber~/ \inserttotalframenumber 
+     \hspace{2pt} 
+   \end{beamercolorbox}
+} 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%% Polygons background
@@ -47,57 +66,47 @@
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%% Headline
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\setbeamertemplate{headline}{\vskip-.1px}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%% Footline
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\setbeamertemplate{footline}{
-   \begin{beamercolorbox}[ht=3ex,dp=2ex,leftskip=1.4cm,rightskip=.3cm]{section in head/foot}
-     \insertsectionnavigationhorizontal{.8\textwidth}{}{}
-     \hfill 
-     \insertframenumber~/ \inserttotalframenumber 
-     \hspace{2pt} 
-   \end{beamercolorbox}
-} 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%% Title page
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \setbeamercolor{title}{fg=ITMOwhite}
 
+% Changing foot/head lines for titlepage
+\makeatletter
+\def\ps@lines@titlepage{%
+  \setbeamertemplate{footline}{
+      \setlength\lineskip{3pt}
+     {\centering\usebeamercolor[fg]{title}\tiny\insertdate\par}
+     \vspace{.5cm}
+  }
+  \setbeamertemplate{headline}{
+      \vspace{.5cm}
+     {\centering\includegraphics[height = 1.5cm]{figs/itmo_logo_blue_en.eps}\par}
+   }
+  \setbeamertemplate{background}{
+    \includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio]{figs/itmo_polygons.pdf}
+  }
+}
+\makeatother
+
 \setbeamertemplate{title page}
 {
-  \itmopolygons{
-  \vbox{}
+  \thispagestyle{lines@titlepage}
+  \usebeamercolor[fg]{title}
+
   \vfill
-  \begin{centering}
-      \begin{center}
-        \vspace{1cm}
-        \includegraphics[height = 1.5cm]{figs/itmo_logo_blue_en.eps} \\
-        \vspace{1cm}
 
-        \noindent\makebox[\textwidth][c]{%
-        \begin{minipage}{0.9\textwidth}
-                \centering{\bf\Large\inserttitle}
-        \end{minipage}}
+  \noindent\makebox[\textwidth][c]{%
+  \begin{minipage}{0.9\textwidth}
+      \centering{\bf\Large\inserttitle}
+  \end{minipage}}
 
-        \vspace{1cm}
+  \bigskip
 
-        {\scriptsize\insertauthor}
+  \centering{\footnotesize\insertauthor}    
 
-        \vspace{0.3cm}
+  \bigskip
 
-        {\scriptsize\insertinstitute}
-
-        \vspace{0.7cm}
-        {\scriptsize\insertdate}
-      \end{center}
-  \end{centering}
-  \vfill
-  }
+  {\tiny\insertinstitute}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
