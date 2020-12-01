@@ -1,19 +1,20 @@
 
 \mode<presentation>
 %%%%% Fourier math
-\usepackage[T1]{fontenc} 
-\usepackage{fourier} 
+\usepackage[T1]{fontenc}
+\usepackage{fourier}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%% Packages
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage[raster,most]{tcolorbox}
+\usepackage{adjustbox}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%% Define the colors of the corporate style.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\definecolor{ITMOblue}{RGB}{25,70,186} 
-\definecolor{ITMOred}{RGB}{236,11,67} 
-\definecolor{ITMOwhite}{RGB}{255,255,255} 
+\definecolor{ITMOblue}{RGB}{25,70,186}
+\definecolor{ITMOred}{RGB}{236,11,67}
+\definecolor{ITMOwhite}{RGB}{255,255,255}
 \definecolor{ITMOPeach}{RGB}{255,132,0}
 \definecolor{ITMOSkyBlue}{RGB}{61,181,230}
 \definecolor{ITMOMint}{RGB}{0,174,157}
@@ -33,12 +34,12 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \setbeamertemplate{footline}{
    \begin{beamercolorbox}[ht=3ex,dp=2ex,leftskip=1.4cm,rightskip=.3cm]{section in head/foot}
-     \insertsectionnavigationhorizontal{.8\textwidth}{}{}
-     \hfill 
-     \insertframenumber~/ \inserttotalframenumber 
-     \hspace{2pt} 
+        \insertsectionnavigationhorizontal{.8\textwidth}{}{}
+        \hfill
+        \insertframenumber~/ \inserttotalframenumber
+        \hspace{2pt}
    \end{beamercolorbox}
-} 
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%% Polygons background
@@ -56,7 +57,7 @@
         \put(-28.3,110){%
             \begin{minipage}[t][\paperheight][c]{\paperwidth}
                 \begin{center}
-                    \usebeamercolor[fg]{title}{ 
+                    \usebeamercolor[fg]{title}{
                         #1
                     }
                 \end{center}
@@ -73,40 +74,45 @@
 % Changing foot/head lines for titlepage
 \makeatletter
 \def\ps@lines@titlepage{%
-  \setbeamertemplate{footline}{
-      \setlength\lineskip{3pt}
-     {\centering\usebeamercolor[fg]{title}\tiny\insertdate\par}
-     \vspace{.5cm}
-  }
-  \setbeamertemplate{headline}{
-      \vspace{.5cm}
-     {\centering\includegraphics[height = 1.5cm]{figs/itmo_logo_blue_en.eps}\par}
-   }
-  \setbeamertemplate{background}{
-    \includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio]{figs/itmo_polygons.pdf}
-  }
+    %%%% FOOTLINE
+    \setbeamertemplate{footline}{
+        \setlength\lineskip{3pt}
+        {\centering\usebeamercolor[fg]{title}\tiny\insertdate\par}
+        \vspace{.5cm}
+    }
+    %%%% HEADLINE
+    \setbeamertemplate{headline}{
+        \vspace{.5cm}
+        {\centering\includegraphics[height = 1.5cm]{figs/itmo_logo_blue_en.eps}\par}
+    }
+    %%%% BACKGROUND
+    \setbeamertemplate{background}{
+        \includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio]{figs/itmo_polygons.pdf}
+    }
 }
+
 \makeatother
 
 \setbeamertemplate{title page}
 {
-  \thispagestyle{lines@titlepage}
-  \usebeamercolor[fg]{title}
+    \thispagestyle{lines@titlepage}
+    \usebeamercolor[fg]{title}
 
-  \vfill
+    \vfill
 
-  \noindent\makebox[\textwidth][c]{%
-  \begin{minipage}{0.9\textwidth}
-      \centering{\bf\Large\inserttitle}
-  \end{minipage}}
+    \centering{
+        \begin{varwidth}{0.9\textwidth}
+            \bf\Large\inserttitle
+        \end{varwidth}
+    }
 
-  \bigskip
+    \bigskip
 
-  \centering{\footnotesize\insertauthor}    
+    \centering{\footnotesize\insertauthor}
 
-  \bigskip
+    \bigskip
 
-  {\tiny\insertinstitute}
+    {\tiny\insertinstitute}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -120,11 +126,11 @@
 %%% The page 126
 \setbeamertemplate{frametitle}{
 \nointerlineskip
-\begin{beamercolorbox}[wd=\paperwidth,dp=7pt,ht=18pt,leftskip=10px,rightskip=10px]{section in head/foot}
-  \insertframetitle
-  \hfill
-  \raisebox{-1pt}{\includegraphics[height=12pt]{figs/itmo_logo_horiz_blue_en.eps}}
-\end{beamercolorbox}
+    \begin{beamercolorbox}[wd=\paperwidth,dp=7pt,ht=18pt,leftskip=10px,rightskip=10px]{section in head/foot}
+        \insertframetitle
+        \hfill
+        \raisebox{-1pt}{\includegraphics[height=12pt]{figs/itmo_logo_horiz_blue_en.eps}}
+    \end{beamercolorbox}
 }
 
 \logo{\includegraphics[height=1.5cm]{figs/itmo_logo_blue_en.eps}}
@@ -137,7 +143,7 @@
 %%%%% Alert
 \setbeamercolor{alerted text}{fg=ITMOred,bg=white}
 \newcommand{\boxalert}[1]{{%
-  \colorbox{ITMOred}{\color{white}{#1}}%
+    \colorbox{ITMOred}{\color{white}{#1}}%
 }}
 \usestructuretemplate{\color{ITMOblue}}{}
 %%%%% Table of Contents
@@ -149,84 +155,98 @@
 %%%%% https://tex.stackexchange.com/questions/385663/custom-enumerate-list-align-enumerate-label-at-the-center-of-text
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcounter{fancycount}
-% lets define some options using pgfkeys 
+% lets define some options using pgfkeys
 % https://tex.stackexchange.com/questions/34312/how-to-create-a-command-with-key-values
 \pgfkeys{
- /fancylist/.is family, /fancylist,
- default/.style = 
-  {shape = circle, color = ITMOblue},
-  shape/.estore in = \myshape,
-  color/.estore in = \mycolor,
+    /fancylist/.is family,
+    /fancylist,
+    default/.style = {shape = circle, color = ITMOblue},
+    shape/.estore in = \myshape,
+    color/.estore in = \mycolor,
 }
 
-\newenvironment{fancylist}[1][color=ITMOPeach, shape=circle]{%
-  \pgfkeys{/fancylist, default, #1}%
+\newenvironment{fancylist}[1][color=ITMOPeach, shape=circle] {%
+    \pgfkeys{/fancylist, default, #1}%
 
-  % lets decide label shape based on option
-  \def\mysquare{square}
-  \def\myring{ring}
-  \def\myhollowsquare{hollowsquare}
-  \ifx\myshape\mysquare
-  \def\mydraw{
-  \node[draw=\mycolor,rectangle,minimum width=7.0mm, minimum height=7.0mm, inner sep=0pt,fill=\mycolor] at (X) {\color{white}\refstepcounter{fancycount}\Large\arabic{fancycount}}
-  }
-  \else
-    \ifx\myshape\myhollowsquare
-    \def\mydraw{
-      \node[draw=\mycolor,rectangle,minimum width=7.0mm, minimum height=7.0mm, inner sep=0pt] at (X) {\color{white}\refstepcounter{fancycount}\Large\arabic{fancycount}}
-      }
+    % lets decide label shape based on option
+    \def\mysquare{square}
+    \def\myring{ring}
+    \def\myhollowsquare{hollowsquare}
+    \ifx\myshape\mysquare
+        \def\mydraw{
+            \node[
+                draw = \mycolor, rectangle, minimum width = 7.0mm,
+                minimum height=7.0mm, inner sep = 0pt, fill = \mycolor
+            ] at (X) { \color{white}\refstepcounter{fancycount}\Large\arabic{fancycount} }
+        }
     \else
-      \ifx\myshape\myring
-        \def\mydraw{
-        \node[draw=\mycolor,circle,minimum width=7.0mm,inner sep=0pt] at (X) {\color{white}\refstepcounter{fancycount}\Large\arabic{fancycount}}
-        }
-      \else
-        \def\mydraw{
-        \node[draw=\mycolor,circle,minimum width=7.0mm,inner sep=0pt,fill=\mycolor] at (X) {\color{white}\refstepcounter{fancycount}\Large\arabic{fancycount}}
-        }
-      \fi
+        \ifx\myshape\myhollowsquare
+            \def\mydraw{
+                \node[
+                    draw = \mycolor, rectangle, minimum width = 7.0mm, minimum height = 7.0mm, inner sep = 0pt
+                ] at (X) { \color{white}\refstepcounter{fancycount}\Large\arabic{fancycount} }
+            }
+        \else
+            \ifx\myshape\myring
+                \def\mydraw{
+                    \node[
+                        draw = \mycolor, circle, minimum width = 7.0mm, inner sep = 0pt
+                    ] at (X) {\color{white}\refstepcounter{fancycount}\Large\arabic{fancycount}}
+                }
+            \else
+                \def\mydraw{
+                    \node[
+                        draw = \mycolor, circle, minimum width = 7.0mm, inner sep = 0pt, fill=\mycolor
+                    ] at (X) {\color{white}\refstepcounter{fancycount}\Large\arabic{fancycount}}
+                }
+            \fi
+        \fi
     \fi
-  \fi
 
-  \setcounter{fancycount}{0}
-  % lets keep it simple and ask users to use \item
-  \def\item{\tcbitem}
-  \begin{tcbitemize}[raster columns=1,    
-    nofloat,
-    enhanced,
-    raster left skip=10.0mm,
-    sharp corners=all,
-    opacityfill=0,
-    valign=center,
-    coltext=black,
-    overlay={\coordinate (X) at ([xshift=-7.50mm]frame.west);
-      \mydraw; \draw[very thick, color=\mycolor] (frame.north west) -- (frame.south west); }]}{\end{tcbitemize}}
+    \setcounter{fancycount}{0}
+    % lets keep it simple and ask users to use \item
+    \def\item{\tcbitem}
+    \begin{tcbitemize} [
+        raster columns=1,
+        nofloat,
+        enhanced,
+        raster left skip=10.0mm,
+        sharp corners=all,
+        opacityfill=0,
+        valign=center,
+        coltext=black,
+        overlay={
+            \coordinate (X) at ([xshift=-7.50mm]frame.west); \mydraw;
+            \draw[very thick, color=\mycolor] (frame.north west) -- (frame.south west);
+        }
+    ]
+} {\end{tcbitemize}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%% Fancybox 
+%%%%% Fancybox
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newsavebox\mybox
-\providecommand\fancybox[3][ITMOblue]{%
-\tcbset{
-  mybox/.style={
-    enhanced,
-    grow to left by=-2.5cm,
-    boxsep=0mm,
-    sharp corners=all,
-    opacityfill=0,
-    coltext=black,
-    overlay={
-      \coordinate (X) at ([xshift=-1mm, yshift=-1.5mm]frame.north west);
-      \node[align=right, text=#1, text width=2.5cm, anchor=north east] at (X) {#2};
-      \draw[line width=0.5mm, color=#1] (frame.north west) -- (frame.south west); 
-      }
+\providecommand\fancybox[3][ITMOblue] {%
+
+    \tcbset{
+        mybox/.style={
+            enhanced,
+            grow to left by=-2.5cm,
+            boxsep=0mm,
+            sharp corners=all,
+            opacityfill=0,
+            coltext=black,
+            overlay={
+                \coordinate (X) at ([xshift=-1mm, yshift=-1.5mm]frame.north west);
+                \node[align=right, text=#1, text width=2.5cm, anchor=north east] at (X) {#2};
+                \draw[line width=0.5mm, color=#1] (frame.north west) -- (frame.south west);
+            }
+        }
     }
-  }
 
-\begin{tcolorbox}[mybox]
-  efdf: #3
-\end{tcolorbox}
-
+    \begin{tcolorbox}[mybox]
+        efdf: #3
+    \end{tcolorbox}
 
 }
 
@@ -239,27 +259,27 @@
 \renewenvironment<>{theorem}[1][]{%
     \refstepcounter{theo}
     \tcbset{
-      mybox/.style={
-        enhanced,
-        grow to left by=-2cm,
-        boxsep=0mm,
-        sharp corners=all,
-        opacityfill=0,
-        coltext=black,
-        overlay={
-          \coordinate (X) at ([xshift=-1mm, yshift=-1.5mm]frame.north west);
-          \node[align=right, text=ITMOblue, text width=2.5cm, anchor=north east] at (X) {Theorem~\thetheo};
-          \draw[line width=0.5mm, color=ITMOblue] (frame.north west) -- (frame.south west); 
-          }
+        mybox/.style={
+            enhanced,
+            grow to left by=-2cm,
+            boxsep=0mm,
+            sharp corners=all,
+            opacityfill=0,
+            coltext=black,
+            overlay={
+                \coordinate (X) at ([xshift=-1mm, yshift=-1.5mm]frame.north west);
+                \node[align=right, text=ITMOblue, text width=2.5cm, anchor=north east] at (X) {Theorem~\thetheo};
+                \draw[line width=0.5mm, color=ITMOblue] (frame.north west) -- (frame.south west);
+            }
         }
-      }
-      
+    }
+
     \def\tmp{#1}%
     \ifx\tmp\@nnil
-      \begin{actionenv}#2\begin{tcolorbox}[mybox]
+        \begin{actionenv}#2\begin{tcolorbox}[mybox]
         \textit{#1}\par
     \else
-      \begin{actionenv}#2\begin{tcolorbox}[mybox]
+        \begin{actionenv}#2\begin{tcolorbox}[mybox]
 }{
     \end{tcolorbox}\end{actionenv}
 }
@@ -277,7 +297,7 @@
         overlay={
           \coordinate (X) at ([xshift=-1mm, yshift=-1.5mm]frame.north west);
           \node[align=right, text=ITMOEmerald, text width=2.5cm, anchor=north east] at (X) {Proof.};
-          \draw[line width=0.5mm, color=ITMOEmerald] (frame.north west) -- (frame.south west); 
+          \draw[line width=0.5mm, color=ITMOEmerald] (frame.north west) -- (frame.south west);
           }
         }
       }
@@ -297,26 +317,26 @@
 \renewenvironment<>{example}[1][]{%
     \refstepcounter{exmpl}
     \tcbset{
-      mybox/.style={
-        enhanced,
-        grow to left by=-2cm,
-        boxsep=0mm,
-        sharp corners=all,
-        opacityfill=0,
-        coltext=black,
-        overlay={
-          \coordinate (X) at ([xshift=-1mm, yshift=-1.5mm]frame.north west);
-          \node[align=right, text=ITMOPeach, text width=2.5cm, anchor=north east] at (X) {Example~\theexmpl};
-          \draw[line width=0.5mm, color=ITMOPeach] (frame.north west) -- (frame.south west); 
-          }
+        mybox/.style={
+            enhanced,
+            grow to left by=-2cm,
+            boxsep=0mm,
+            sharp corners=all,
+            opacityfill=0,
+            coltext=black,
+            overlay={
+                \coordinate (X) at ([xshift=-1mm, yshift=-1.5mm]frame.north west);
+                \node[align=right, text=ITMOPeach, text width=2.5cm, anchor=north east] at (X) {Example~\theexmpl};
+                \draw[line width=0.5mm, color=ITMOPeach] (frame.north west) -- (frame.south west);
+            }
         }
-      }
+    }
     \def\tmp{#1}%
     \ifx\tmp\@nnil
-      \begin{actionenv}#2\begin{tcolorbox}[mybox]
+        \begin{actionenv}#2\begin{tcolorbox}[mybox]
         \textit{#1}\par
     \else
-      \begin{actionenv}#2\begin{tcolorbox}[mybox]
+        \begin{actionenv}#2\begin{tcolorbox}[mybox]
 }{
     \end{tcolorbox}
     \end{actionenv}
@@ -325,20 +345,21 @@
 %Alertblock
 \renewenvironment<>{alertblock}[1]{%
     \tcbset{
-      mybox/.style={
-        enhanced,
-        grow to left by=-2cm,
-        boxsep=0mm,
-        sharp corners=all,
-        opacityfill=0,
-        coltext=black,
-        overlay={
-          \coordinate (X) at ([xshift=-1mm, yshift=-1.5mm]frame.north west);
-          \node[align=right, text=ITMOred, text width=2.5cm, anchor=north east] at (X) {#1};
-          \draw[line width=0.5mm, color=ITMOred] (frame.north west) -- (frame.south west); 
-          }
+        mybox/.style={
+            enhanced,
+            grow to left by=-2cm,
+            boxsep=0mm,
+            sharp corners=all,
+            opacityfill=0,
+            coltext=black,
+            overlay={
+                \coordinate (X) at ([xshift=-1mm, yshift=-1.5mm]frame.north west);
+                \node[align=right, text=ITMOred, text width=2.5cm, anchor=north east] at (X) {#1};
+                \draw[line width=0.5mm, color=ITMOred] (frame.north west) -- (frame.south west);
+            }
         }
-      }
+    }
+
     \begin{actionenv}#2
     \begin{tcolorbox}[mybox]
 }{
