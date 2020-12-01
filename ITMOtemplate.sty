@@ -9,6 +9,11 @@
 \usepackage[raster,most]{tcolorbox}
 \usepackage{adjustbox}
 
+%%%%% Font settings
+\usepackage[scaled]{helvet}
+\renewcommand\familydefault{\sfdefault}
+\usepackage[letterspace=50]{microtype}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%% Define the colors of the corporate style.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -77,7 +82,7 @@
 
     \centering{
         \begin{varwidth}{0.9\textwidth}
-            \Large\inserttitle
+            \lsstyle\bf\Large\inserttitle
         \end{varwidth}
     }
 
