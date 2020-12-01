@@ -42,31 +42,6 @@
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%% Polygons background
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\pgfdeclareimage[width=\paperwidth]{polygons}{figs/itmo_polygons.pdf}
-
-\newcommand{\itmopolygons}[1]{
-    \noindent\begin{picture}(0,0)
-        \put(-32.1,-153.65){
-        \begin{tikzpicture}
-            % ToDo: Generate with different colors
-            \includegraphics[height=\paperheight,width=\paperwidth]{figs/itmo_polygons.pdf}
-        \end{tikzpicture}
-        }
-        \put(-28.3,110){%
-            \begin{minipage}[t][\paperheight][c]{\paperwidth}
-                \begin{center}
-                    \usebeamercolor[fg]{title}{
-                        #1
-                    }
-                \end{center}
-            \end{minipage}
-        }
-    \end{picture}
-}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%% Title page
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \setbeamercolor{title}{fg=ITMOwhite}
@@ -102,7 +77,7 @@
 
     \centering{
         \begin{varwidth}{0.9\textwidth}
-            \bf\Large\inserttitle
+            \Large\inserttitle
         \end{varwidth}
     }
 
