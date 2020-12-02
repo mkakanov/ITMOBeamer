@@ -2,7 +2,6 @@
 \mode<presentation>
 %%%%% Fourier math
 \usepackage[T1]{fontenc}
-\usepackage{fourier}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%% Packages
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -10,9 +9,9 @@
 \usepackage{adjustbox}
 
 %%%%% Font settings
-\usepackage[scaled]{helvet}
-\renewcommand\familydefault{\sfdefault}
-\usepackage[letterspace=50]{microtype}
+% \usepackage[scaled]{helvet}
+% \renewcommand\familydefault{\sfdefault}
+% \usepackage[letterspace=50]{microtype}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%% Define the colors of the corporate style.
@@ -30,9 +29,20 @@
 \definecolor{ITMOEmerald}{RGB}{0,148,77}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% Fonts
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{fontspec}
+\setsansfont[
+    BoldFont={helveticaneue-medium.ttf},
+    ItalicFont={helveticaneue-thin.ttf},
+    BoldItalicFont={helveticaneue-light.ttf}
+]{helveticaneue.ttf}
+\usefonttheme[onlymath]{serif}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%% Headline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\setbeamertemplate{headline}{\vskip-.1px}
+% \setbeamertemplate{headline}{\vskip-.1px}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%% Footline
@@ -57,7 +67,11 @@
     %%%% FOOTLINE
     \setbeamertemplate{footline}{
         \setlength\lineskip{3pt}
-        {\centering\usebeamercolor[fg]{title}\tiny\insertdate\par}
+        {
+            \fontsize{4pt}{6pt}\selectfont\centering\usebeamercolor[fg]{title}
+            \textbf{\textit{\insertdate}}
+            \par
+        }
         \vspace{.5cm}
     }
     %%%% HEADLINE
@@ -72,7 +86,6 @@
 }
 
 \makeatother
-
 \setbeamertemplate{title page}
 {
     \thispagestyle{lines@titlepage}
@@ -82,7 +95,7 @@
 
     \centering{
         \begin{varwidth}{0.9\textwidth}
-            \lsstyle\bf\Large\inserttitle
+            \bf\Large\inserttitle
         \end{varwidth}
     }
 
@@ -92,7 +105,10 @@
 
     \bigskip
 
-    {\tiny\insertinstitute}
+    {
+        \fontsize{5pt}{6pt}\selectfont
+        {\textit{\insertinstitute}}
+    }
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -101,12 +117,14 @@
 \setbeamertemplate{sidebar right}{}
 \setbeamertemplate{navigation symbols}{}
 \setbeamercolor{section in head/foot}{bg=ITMOblue, fg=ITMOwhite}
+\setbeamerfont{frametitle}{series=\bfseries}
+\setbeamerfont{frame}{size=\footnotesize}
 
 %%% See the beamercolorbox documentation in http://tug.ctan.org/macros/latex/contrib/beamer/doc/beameruserguide.pdf
 %%% The page 126
 \setbeamertemplate{frametitle}{
 \nointerlineskip
-    \begin{beamercolorbox}[wd=\paperwidth,dp=7pt,ht=18pt,leftskip=10px,rightskip=10px]{section in head/foot}
+    \begin{beamercolorbox}[wd=\paperwidth,dp=7pt,ht=18pt,leftskip=10pt,rightskip=10pt]{section in head/foot}
         \insertframetitle
         \hfill
         \raisebox{-1pt}{\includegraphics[height=12pt]{figs/itmo_logo_horiz_blue_en.eps}}
