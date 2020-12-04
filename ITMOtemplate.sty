@@ -7,11 +7,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage[raster,most]{tcolorbox}
 \usepackage{adjustbox}
-
-%%%%% Font settings
-% \usepackage[scaled]{helvet}
-% \renewcommand\familydefault{\sfdefault}
-% \usepackage[letterspace=50]{microtype}
+\usepackage{ifxetex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%% Define the colors of the corporate style.
@@ -31,12 +27,19 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%% Fonts
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage{fontspec}
-\setsansfont[
-    BoldFont={helveticaneue-medium.ttf},
-    ItalicFont={helveticaneue-thin.ttf},
-    BoldItalicFont={helveticaneue-light.ttf}
-]{helveticaneue.ttf}
+\ifxetex
+    \usepackage{fontspec}
+    \setsansfont[
+        BoldFont={helveticaneue-medium.ttf},
+        ItalicFont={helveticaneue-thin.ttf},
+        BoldItalicFont={helveticaneue-light.ttf}
+    ]{helveticaneue.ttf}
+\else
+    \usepackage[scaled]{helvet}
+    \renewcommand\familydefault{\sfdefault}
+    \usepackage[letterspace=50]{microtype}
+\fi
+
 \usefonttheme[onlymath]{serif}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
